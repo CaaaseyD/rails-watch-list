@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+      <h1>Create a new List</h1>
+      <%= simple_form_for @list do |f| %>
+        <%= f.input :name %>
+        <%# <%= f.input :category, collection: Restaurant::CATEGORIES %>
+        <%= f.submit class: 'btn btn-primary' %>
+      <% end %>
+    </div>
+  </div>
+    <hr>
+    <%= link_to lists_path do %>
+    <i class="fa-solid fa-arrow-rotate-left"></i> Back to list
+    <% end %>
+    </div>
+</div>
