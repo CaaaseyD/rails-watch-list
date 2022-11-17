@@ -1,5 +1,18 @@
 <div class="container mt-5">
-<h1><%= @list.name %></h1>
+<div class="d-flex mb-3">
+  <div class="me-auto p-2">
+  <h1><%= @list.name %></h1>
+  </div>
+  <div class="p-2">
+    <%= link_to edit_list_path(@list), class: 'btn btn-light btn-sm border text-right' do %>
+      <i class="fa-regular fa-pen-to-square"></i>
+    <% end %>
+    <%= link_to @list, data: {turbo_method: :delete, turbo_confirm: "Are you sure to delete the list?"},
+                  class: 'btn btn-light btn-sm border text-right' do %>
+                    <i class="fa-regular fa-trash-can"></i>
+                  <% end %>
+  </div>
+</div>
 <hr>
   <div class="d-flex justify-content-evenly align-items-center mb-4">
     <% @movies.each do |movie| %>
@@ -15,7 +28,7 @@
               <% if b.movie_id == movie.id %>
                 <div class="d-flex">
                   <i class="fa-solid fa-quote-left"></i> <%= b.comment %>
-                  <%= link_to bookmark_path(b.id), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"},
+                  <%= link_to bookmark_path(b.id), data: {turbo_method: :delete, turbo_confirm: "Are you sure to delete this movie and comment?"},
                   class: 'btn btn-light btn-sm border text-right' do %>
                       <i class="fa-regular fa-trash-can"></i>
                       <% end %>
@@ -27,9 +40,6 @@
       </div>
     <% end %>
   </div>
-    <%# <%= link_to edit_list_path(@list.id), class: 'btn btn-light btn-sm border' do %>
-      <%# <i class="fa fa-pencil"></i> Edit this list
-    <%# <% end %>
   <hr>
 </div>
 

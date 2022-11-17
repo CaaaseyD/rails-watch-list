@@ -1,0 +1,14 @@
+<div class="container p-5">
+  <div class="row align-items-center">
+    <div class="col-xs-12 col-md-8 offset-md-2 col-sm-offset-3">
+      <h1 class="text-center p-2">Edit this List</h1>
+      <%= simple_form_for @list do |f| %>
+        <%= f.input :name %>
+        <%= f.input :photo, as: :file %>
+        <div class="col text-center p-3">
+        <%= f.submit class: 'btn btn-outline-warning' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
