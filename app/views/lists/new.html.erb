@@ -4,6 +4,7 @@
       <h1 class="text-center p-2">Create a new List</h1>
       <%= simple_form_for @list do |f| %>
         <%= f.input :name %>
+        <%= f.input :photo, as: :file %>
         <div class="col text-center p-3">
         <%= f.submit class: 'btn btn-outline-warning' %>
         </div>
