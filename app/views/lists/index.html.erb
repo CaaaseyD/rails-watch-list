@@ -1,10 +1,10 @@
-<div class="banner" style="background-image: url(<%= asset_url 'gr-stocks-q8P8YoR6erg-unsplash.jpg' %>);">
+<div class="banner" style="background-image: url('https://res.cloudinary.com/dlxksjfu3/image/upload/v1668653810/gr-stocks-q8P8YoR6erg-unsplash_bfaxfu.jpg');">
     <h1>My Lists</h1>
 </div>
 <div class="d-flex justify-content-evenly align-items-center mb-4 p-5" id="lists">
   <% @lists.each do |list| %>
     <div class="card" style="width: 18rem;">
-      <img class="img-fluid" src=<%= cl_image_tag list.photo.key, height: 300, width: 400, crop: :fill %> class="card-img-top" alt="...">
+      <img class="img-fluid" src=<%= cl_image_tag 'https://res.cloudinary.com/dlxksjfu3/image/upload/v1668653851/jeremy-yap-J39X2xX_8CQ-unsplash_ihob33.jpg', height: 300, width: 400, crop: :fill %> class="card-img-top" alt="...">
       <div class="card-body">
         <h5 class="card-title">
         <a href="<%= list_path(list.id) %>">
@@ -15,3 +15,5 @@
     </div>
   <% end %>
 </div>
+
+<%# list.photo.key %>
