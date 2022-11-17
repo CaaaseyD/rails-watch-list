@@ -4,8 +4,7 @@
 <div class="d-flex justify-content-evenly align-items-center mb-4 p-5" id="lists">
   <% @lists.each do |list| %>
     <div class="card" style="width: 18rem;">
-      <%# <img class="img-fluid" src=<%= asset_url 'fadi-xd-I4dR572y7l0-unsplash.jpg' %> class="card-img-top" alt="..."> %>
-      <%= cl_image_tag @article.photo.key, height: 300, width: 400, crop: :fill %>
+      <img class="img-fluid" src=<%= cl_image_tag list.photo.key, height: 300, width: 400, crop: :fill %> class="card-img-top" alt="...">
       <div class="card-body">
         <h5 class="card-title">
         <a href="<%= list_path(list.id) %>">
