@@ -4,13 +4,14 @@
 <div class="d-flex justify-content-evenly align-items-center mb-4 p-5" id="lists">
   <% @lists.each do |list| %>
     <div class="card" style="width: 18rem;">
-      <img class="card-img-top" alt="list" src=<%= cl_image_tag list.photo.key%>>
+      <img class="card-img-top" alt="list" src=<%= cl_image_tag list.photo.key%> >
       <div class="card-body">
         <h5 class="card-title">
         <a href="<%= list_path(list.id) %>">
         <%= list.name %>
         </a>
         </h5>
+        <%= cl_image_tag list.photo.key, height: 300, width: 400, crop: :fill %>
       </div>
     </div>
   <% end %>
