@@ -1,5 +1,6 @@
 <div class="container mt-5">
 <h1><%= @list.name %></h1>
+<hr>
   <div class="d-flex justify-content-evenly align-items-center mb-4">
     <% @movies.each do |movie| %>
       <div class="card" style="width: 18rem;">
@@ -11,9 +12,15 @@
           <hr>
           <p class="card-text"><small class="text-muted">
             <% @list.bookmarks.each do |b| %>
-                <% if b.movie_id == movie.id %>
-                "<%= b.comment %>"
-                <% end %>
+              <% if b.movie_id == movie.id %>
+                <div class="d-flex">
+                  <i class="fa-solid fa-quote-left"></i> <%= b.comment %>
+                  <%= link_to bookmark_path(b.id), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"},
+                  class: 'btn btn-light btn-sm border text-right' do %>
+                      <i class="fa-regular fa-trash-can"></i>
+                      <% end %>
+                </div>
+              <% end %>
             <% end %>
           </small></p>
         </div>
@@ -24,8 +31,9 @@
       <%# <i class="fa fa-pencil"></i> Edit this list
     <%# <% end %>
   <hr>
-  <%= link_to lists_path do %>
-    <i class="fa-solid fa-arrow-rotate-left"></i> Back to list
-  <% end %>
-  <br>
 </div>
+
+
+                    <%# <%= link_to bookmark_path(b.id), class: 'btn btn-light btn-sm border text-right' do %>
+                      <%# <i class="fa-regular fa-trash-can"></i>
+                      <% end %>

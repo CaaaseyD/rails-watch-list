@@ -1,17 +1,13 @@
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-sm-10 col-sm-offset-1">
-      <h1>Create a new List</h1>
+<div class="container p-5">
+  <div class="row align-items-center">
+    <div class="col-xs-12 col-md-8 offset-md-2 col-sm-offset-3">
+      <h1 class="text-center p-2">Create a new List</h1>
       <%= simple_form_for @list do |f| %>
         <%= f.input :name %>
-        <%# <%= f.input :category, collection: Restaurant::CATEGORIES %>
-        <%= f.submit class: 'btn btn-primary' %>
+        <div class="col text-center p-3">
+        <%= f.submit class: 'btn btn-outline-warning' %>
+        </div>
       <% end %>
     </div>
   </div>
-    <hr>
-    <%= link_to lists_path do %>
-    <i class="fa-solid fa-arrow-rotate-left"></i> Back to list
-    <% end %>
-    </div>
 </div>
