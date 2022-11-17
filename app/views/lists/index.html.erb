@@ -4,7 +4,11 @@
 <div class="d-flex justify-content-evenly align-items-center mb-4 p-5" id="lists">
   <% @lists.each do |list| %>
     <div class="card" style="width: 18rem;">
-      <img class="card-img-top" alt="list" src="<%= cl_image_path list.photo.key%>" >
+      <% if list.photo.attached? %>
+        <img class="card-img-top" alt="list" src="<%= cl_image_path list.photo.key%>" >
+      <% else %>
+         <img class="card-img-top" alt="list" src="<%= asset_path('default_img.jpg') %>" >
+      <% end %>
       <div class="card-body">
         <h5 class="card-title">
         <a href="<%= list_path(list.id) %>">
