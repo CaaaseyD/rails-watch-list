@@ -15,12 +15,12 @@
 </div>
 <hr>
   <div class="d-flex justify-content-evenly align-items-center mb-4">
-    <% @movies.each do |movie| %>
+    <% @list.movies.each do |movie| %>
       <div class="card" style="width: 18rem;">
         <img src="<%= movie.poster_url %>" class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title"><%= movie.title %></h5>
-          <p class="card-text"><%= movie.rating %>💛</p>
+          <p class="card-text"><%= movie.rating %><label class="rating-color">★</label></p>
           <p class="card-text"><%= movie.overview %></p>
           <hr>
           <p class="card-text"><small class="text-muted">
@@ -41,9 +41,57 @@
     <% end %>
   </div>
   <hr>
+  <div class="row justify-content-around">
+    <div class="col-4" id="allreview">
+      <h2>Reviews</h2>
+      <ul class="list-group list-group-flush">
+        <% @list.reviews.each do |review| %>
+            <% @time = (Time.now.utc- review.created_at.to_time).round() / 60 %>
+            <% if @time < 1  %>
+            <% @message = "less than a minute ago"%>
+            <% elsif @time >= 1 && @time < 2 %>
+            <% @message = "1 minute ago" %>
+            <% else %>
+            <% @message = "#{@time} minutes ago" %>
+            <% end %>
+          <li class="list-group-item">
+          <div class="review-rating">
+          <% review.rating.to_i.times do %>
+          <label class="rating-color">★</label>
+          <% end %>
+          <% review.blank_stars.times do %>
+          <label>☆</label>
+          <% end %>
+          <%= @message %>
+          </div>
+          <div class="row justify-content-between">
+            <div class="col-10">
+              <%= review.comment %>
+            </div>
+            <div class="col-2">
+              <%= link_to review_path(review), data: {turbo_method: :delete, turbo_confirm: "Are you sure to delete this review?"},
+                      class: 'btn btn-light btn-sm border text-right' do %>
+                          <i class="fa-regular fa-trash-can"></i>
+                          <% end %>
+            </div>
+          </div>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="col-4 p-4" id="newreview">
+      <h5>Add your review</h5>
+
+      <%= simple_form_for [@list, @review] do |f| %>
+      <%= f.input :comment %>
+      <%= f.input :rating, as: :select, collection: (1..5), required: true, prompt: "What's your rating", input_html: { data: { controller: "star-rating" } } %>
+      <%= f.submit "Submit", class: "btn btn-success" %>
+      <% end %>
+    </div>
+  </div>
+
 </div>
 
-
-                    <%# <%= link_to bookmark_path(b.id), class: 'btn btn-light btn-sm border text-right' do %>
-                      <%# <i class="fa-regular fa-trash-can"></i>
-                      <% end %>
+      <%# <span>Rating</span>
+      <div class="rating d-flex justify-content-end" id="newreviewrating"><input type="radio" name="rating" value="5" id="5"><label for="5">☆</label> <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label> <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label> <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label> <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
+      </div> %>

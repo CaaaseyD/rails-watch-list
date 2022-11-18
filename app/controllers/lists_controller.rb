@@ -8,6 +8,7 @@ class ListsController < ApplicationController
     bookmark = Bookmark.where(list_id: params[:id])
     movie_id = bookmark.map { |m| m.movie_id }
     @movies = movie_id.map { |id| Movie.find(id) }
+    @review = Review.new(list:@list)
   end
 
   def new

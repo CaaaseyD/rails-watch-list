@@ -4,7 +4,7 @@
       <h1 class="text-center p-2">Create a new Bookmark</h1>
       <%= simple_form_for @bookmark do |f| %>
         <%= f.input :comment %>
-        <%= f.association :movie %>
+        <%= f.association :movie%>
         <%= f.association :list %>
         <div class="col text-center p-3">
         <%= f.submit class: 'btn btn-outline-warning text-center' %>
@@ -12,3 +12,6 @@
       <% end %>
     </div>
 </div>
+
+
+<%# , input_html: {data: {controller: "tom-select"}}  %>
