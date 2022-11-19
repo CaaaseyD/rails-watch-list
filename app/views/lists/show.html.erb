@@ -14,10 +14,10 @@
   </div>
 </div>
 <hr>
-  <div class="d-flex justify-content-evenly align-items-center mb-4">
+  <div class="d-flex justify-content-evenly align-items-start mb-4">
     <% @list.movies.each do |movie| %>
-      <div class="card" style="width: 18rem;">
-        <img src="<%= movie.poster_url %>" class="card-img-top" alt="...">
+      <div class="card" style="width: 18rem;" id="bookmarks">
+        <img src="<%= movie.poster_url %>" class="card-img-top" alt="movie_poster">
         <div class="card-body">
           <h5 class="card-title"><%= movie.title %></h5>
           <p class="card-text"><%= movie.rating %><label class="rating-color">★</label></p>
@@ -46,14 +46,6 @@
       <h2>Reviews</h2>
       <ul class="list-group list-group-flush">
         <% @list.reviews.each do |review| %>
-            <% @time = (Time.now.utc- review.created_at.to_time).round() / 60 %>
-            <% if @time < 1  %>
-            <% @message = "less than a minute ago"%>
-            <% elsif @time >= 1 && @time < 2 %>
-            <% @message = "1 minute ago" %>
-            <% else %>
-            <% @message = "#{@time} minutes ago" %>
-            <% end %>
           <li class="list-group-item">
           <div class="review-rating">
           <% review.rating.to_i.times do %>
@@ -62,7 +54,7 @@
           <% review.blank_stars.times do %>
           <label>☆</label>
           <% end %>
-          <%= @message %>
+          <%= review.message %>
           </div>
           <div class="row justify-content-between">
             <div class="col-10">
@@ -91,7 +83,6 @@
   </div>
 
 </div>
-
       <%# <span>Rating</span>
       <div class="rating d-flex justify-content-end" id="newreviewrating"><input type="radio" name="rating" value="5" id="5"><label for="5">☆</label> <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label> <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label> <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label> <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
       </div> %>
