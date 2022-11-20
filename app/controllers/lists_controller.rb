@@ -42,10 +42,14 @@ class ListsController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
-
+  def move
+    @list = List.find(params[:id])
+    @list.insert_at(params[:position].to_i)
+    head :ok
+  end
   private
 
   def list_params
-    params.require(:list).permit(:name, :photo)
+    params.require(:list).permit(:name, :photo, :position)
   end
 end

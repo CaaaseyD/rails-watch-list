@@ -12,3 +12,6 @@ application.register("star-rating", StarRatingController)
 
 import TomSelectController from "./tom_select_controller"
 application.register("tom-select", TomSelectController)
+
+import SortableController from "./sortable_controller"
+application.register("sortable", SortableController)

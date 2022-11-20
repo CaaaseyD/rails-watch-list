@@ -27,7 +27,6 @@ gem "stimulus-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
-gem "cloudinary"
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
@@ -44,6 +43,8 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 gem "bootsnap", require: false
 gem 'open-uri'
 gem 'json'
+gem "cloudinary"
+gem "acts_as_list", "~> 1.0"
 # Use Sass to process CSS
 # gem "sassc-rails"
 
